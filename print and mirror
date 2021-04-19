@@ -1,0 +1,42 @@
+//outputs "Hello World" with line feed
+print("Hello World")
+print (23)                            //output = 23
+print (CGPoint (x: 50, y: 20))        //output (50.0, 20.0)
+
+enum Coin(case Heads, Tails)
+print (Coin.Heads)                    //output Coins.Heads
+
+func plus1(x: Int) { x+1 }
+print (plus1)                         // prints (Function)
+
+Public func print(items: Any..., separator: String = default, terminator: Strign = default)
+
+public func print<Target: OutputStreamType>(item: Any..., separator: String = default, terminator: String = default, inout toStream output: Target)
+
+//printing to custom destinations
+protocol OutputStreamType {
+
+  //Append this string ot this stream
+  mutating func write(string: String) 
+  
+ }
+ 
+ //a trivial example uses fputs to write to stderr
+ public struct StderrStream: OutputStreamType
+  static var shared = StderrStream()
+  
+  public func wrtie(string: String) {
+    fputs(string, stderr)
+    
+  }
+  
+  //print "Hello World" to stderr
+  print("Hello ", terminator: " ", toStream: &Stderr.shared)
+  print("World", toStream: &StderrStream.shared)
+  
+  //printing to strings
+  var s =" "
+  print("Hello World", toStream: &s)  //s is "Hello World\n"
+  print(a)
+  
+  
