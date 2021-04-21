@@ -1,0 +1,79 @@
+var soundDictionary = ["cow" :"moo", "dog" : "bark", "pig" : "squeal"]
+print(soundDictionary["cow"] == "moo")
+print (soundDictionary ["fox"] 
+
+//add an explicit type annotation 
+var soundDictionary: [String: String] = ["cow" : "moo", "dog": "bark", "pig" : "squeal"]
+
+var sound =soundDictionary("cow") 
+let statement = "The couw says" + sound
+
+//unwrapping optionals
+//forced unwrapping
+print ("The sound is \(sound!)") // may or may not crash
+
+//safely unwrap with exclamation mark
+if sound != nil {
+    print("The sound is \(sound!)) //does not crash
+}
+
+//conditional binding
+if let sound = soundDictionary(animal) [
+    print("The \(animal) saya \(sound)
+}
+else {
+    print ("Any sound the \(animal) says is unknown to modern science")
+}
+
+let mySound = soundDictionary[animal]  //mySound is wrapped
+if let mySound = mySound {
+    print (mySound)  // mySound is unwrapped
+}
+
+
+//Using conditional binding to test types
+public func fetchViewWithType<T>(
+    type t: T.Type, contentView: UIView) -> T? {
+    
+    for eachView in contentView.subviews {
+    
+        if let view = eachView as? T (return View)
+        
+        if let subView = fetchViewWithType (
+           type: t.self, contentView:eachVew) {
+           
+             return subview
+        }
+     } //end for loop
+     
+     return nil
+ } // func 
+ 
+ //binding cascades
+ if let cowSound = soundDictionary["cow"] {
+ 
+     if let dogSound = soundDictionary["dog"] {
+     
+       if let pigSound = soundDictionary["pig"] {
+       
+          // use sounds here
+        }
+        
+     }
+     
+ }
+ 
+ //the above is a messy code with all the indents we can change that using unified conditional as in example given below
+ 
+ if let
+    cowSound = soundDictionary["cow"]
+    dogSound = soundDictionary["dog"]
+    pigSound = soundDictionary["pig"]
+    
+    //use sounds here
+    
+  }
+  
+
+  
+ 
