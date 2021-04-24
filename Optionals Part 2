@@ -1,0 +1,102 @@
+//Guard statements another way to unwrap optionals and with booleans
+//without guard
+if let cowSound = soundDictionary["cow"] {
+  //cowSound is unwrapped with this scope
+
+}
+//cowSound is undefined outside the scope
+
+guard let cowSound = soundDictionary["cow"] else {
+  throw Error.MissingValue
+
+}
+
+//a single guard statement supports multiple let conditions from page 50
+guard let
+     cowSound = soundDictionary["cow"]
+     dogSound = soundDictionary["dog"]
+     else (throw Error.MissingValue)
+
+//use implcitly unwrapped optionals
+var animal = "cow"
+let unwrappedSound = soundDictionary [animal]
+
+let unwrappedSound: String! - soundDictionary [animal]  //moo
+
+let soundString = "\" "  + unwrappedSound + "\"". //2
+
+print("The unwrapped sound sound is \(soundString)")
+
+//nil coalescing Operator
+let sound = soundDictionary ["fox"] ?? "unknown"
+
+//Optional Assignment
+infix operator = ?()
+public func =?<T>(inout target:T, newValue:T?) {
+   if let unwrapped = newValue {
+        target = unwrapped
+   }
+   
+}
+
+var s: String = "initial value"
+
+s =? "value 1"
+
+s =? nil
+
+//optional patterns
+enum Optional<T> {
+
+    case None
+    case Some(T)
+    
+ }
+ 
+ switch soundDictionary [animal] {
+ 
+     case .Some(let sound) :
+       print ("Using case, the unwrapped sound is \(sound)")
+     
+     default: break
+  }
+  
+  //use case
+  switch soundDictionary[animal] [
+  
+  case let sound? where sound.characters.count <5:
+      print ("The \(sound) is long")
+  
+  case let sound?
+      print ("The \(sound) sound is under 5 characters")
+  
+  default: break
+  }
+  
+  //optional chaining
+  extension Array where Element: Comparable {
+  
+     var maxIndex: Int? {
+       if let e = self.enumerate().maxElement({$1.element > $0.e;ement}) {
+       
+          return e.index
+       }
+       return nil
+     }
+   }
+   
+   //selector testing and optiona chaining
+   //rootclass put two subclasses
+   class Root { func rootFunc() {} )
+   class Sub1: Root{ func sub1Func() { print(sub1")}}
+   class Sub2: Root{func sub2func() {print(sub2)}}
+   
+   //create hetergeneous array of items
+   var items: [Root} = [Sub1(), Sub2()]
+   
+   //conditionally test and run selectors
+   (items[0] as? Sub1)?.sub1Func() //runs
+   (items(0) as? Sub2)?.sub2Func()
+   
+   //optional mapping
+   
