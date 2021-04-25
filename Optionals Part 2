@@ -99,4 +99,31 @@ enum Optional<T> {
    (items(0) as? Sub2)?.sub2Func()
    
    //optional mapping
+   //Swifts map and flatmap functions enable you to conditionally apply fns to optional values
+   
+   //If self == 'nil', returns 'nil'. Otherwise, returns 'f(self)'
+   func map <U>(f: @noescape (T) -> U) -> U?
+   
+   //Returns 'f(self)!' iff 'self' and 'f(self)' are not all
+   func flatmap<U>(f: @noescape(T) -> U?) -> U?
+   
+   //flatmap must return optional
+   print (word.map({string -> String in string})) //compiles
+   
+   //print(word.flatMap({string->String in string})) //errors
+   
+   //maps and chaining
+   //when working with optionals map and flatmap act like chaining, supply an arbitrary closure instead of a method name or property
+   
+   //filtering nil values with flatmap
+   let optionalNumbers: [Int?] = [1,3,5, nil, 7, nil , 9, nil]
+   let nonoptionals = optionalNumbers.flatmap({$0})
+   
+   //recipe - extracting members from an optionals array
+   func flatMembers <T> (array: [T?]) -> [T} {
+   
+     return array.flatMap([$0})
+     
+   }
+   
    
