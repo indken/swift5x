@@ -1,0 +1,108 @@
+//closure
+let simpleClosure = {   
+}
+simpleClosure()
+
+//closures containing statements
+let simpleClosure = {
+    print("Hello, World!")
+}
+simpleClosure()
+
+//closures that accept parameters
+ let simpleClosure:(String) -> () = { name in
+    print(name)
+}
+simpleClosure("Hello, World")
+
+//closure that returns type
+let simpleClosure:(String) -> (String) = { name in
+    
+    let greeting = "Hello, World! " + "Program"
+    return greeting
+}
+
+let result = simpleClosure("Hello, World")
+print(result)
+
+//passing closures as a function parameter
+func someSimpleFunction(someClosure:()->()) {
+
+    print("Function Called")
+}
+
+someSimpleFunction(someClosure: {
+    print("Hello World! from closure")
+})
+
+//trailing closures
+func someSimpleFunction(msg:String, someClosure:()->()) {
+    print(msg)
+    someClosure()
+}
+
+someSimpleFunction(msg:"Hello Swift Community!")  {
+    print("Hello World! from closure")
+}
+
+//autoclosure
+func someSimpleFunction(someClosure: @autoclosure ()->(), msg:String) {
+    print(msg)
+    someClosure()
+}
+
+someSimpleFunction(someClosure: (print("Hello World! from closure")), msg:"Hello Swift Community!")
+
+//closure as a completion handler
+var closeButtonPressed = false
+func codeinPlayground(completion:(String)->()) {
+    
+    print("Code, Take a Nap and Relax")
+    if closeButtonPressed {
+        completion("Close the playground")
+    }
+}
+
+codeinPlayground { (msg) in
+    print(msg)
+}
+
+//syntax of a function
+ var mathFunction: (Int, Int) -> Int = add
+
+//syntax of closure
+    { (parameters) -> return type in statements }
+
+//sample closure for playground
+// Closure take no parameter and return nothing
+let sayHello: () -> Void = {
+    print("Hello")
+}
+
+sayHello()
+
+// Closure take one parameter and return 1 parameter
+let value: (Int) -> Int = { (value1) in
+    return value1
+}
+
+print(value(5))
+
+// Closure take two parameter and return 1 parameter
+let add: (Int, Int) -> Int = { (value1, value2) in
+    return value1 + value2
+}
+
+print(add(5, 4))
+
+// Closure take two parameter and return String parameter
+let addValues: (Int, Int) -> String = { (value1, value2) -> String in
+    return String("Sum is: \(value1 + value2)")
+}
+
+print(addValues(5, 4))
+
+
+
+
+
